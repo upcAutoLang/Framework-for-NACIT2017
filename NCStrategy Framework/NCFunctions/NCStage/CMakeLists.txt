@@ -1,0 +1,21 @@
+# CMake最低版本要求
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+# 添加源文件中的#include路径
+INCLUDE_DIRECTORIES(./)
+INCLUDE_DIRECTORIES(./Basic)
+
+# 设置路径变量
+SET(LIB_STAGE_SOURCE
+	./Basic/ncstage.cpp)
+SET(LIB_STAGEBASIC_SOURCE
+	${LIB_STAGE_SOURCE}
+	./Basic/ncstage_basic.cpp)
+SET(LIB_STAGETEST_SOURCE
+	${LIB_STAGE_SOURCE}
+	./ncstage_test.cpp)
+
+# 生成库文件
+ADD_LIBRARY(ncstage SHARED ${LIB_STAGE_SOURCE})
+ADD_LIBRARY(ncstage_basic SHARED ${LIB_STAGEBASIC_SOURCE})
+ADD_LIBRARY(ncstage_test SHARED ${LIB_STAGETEST_SOURCE})

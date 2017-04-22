@@ -1,0 +1,26 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+LINK_DIRECTORIES(${PROJECT_BINARY_DIR}/lib)
+
+INCLUDE_DIRECTORIES(./)
+INCLUDE_DIRECTORIES(../NCFunctions)
+INCLUDE_DIRECTORIES(../NCFunctions/NCServer)
+INCLUDE_DIRECTORIES(../NCFunctions/NCClient)
+INCLUDE_DIRECTORIES(../NCFunctions/NCStage)
+INCLUDE_DIRECTORIES(../NCFunctions/NCStage/Basic)
+INCLUDE_DIRECTORIES(../CustomizeFunctions)
+INCLUDE_DIRECTORIES(../CustomizeFunctions/CustomizeStructs)
+INCLUDE_DIRECTORIES(../CustomizeFunctions/GeneralImageProcess)
+INCLUDE_DIRECTORIES(../CustomizeFunctions/SupportFunctions)
+
+SET(LIBS_SERVER
+	ncserver
+	ncstage
+	ncstage_basic
+	ncstage_test
+)
+
+ADD_EXECUTABLE(IPCServer
+	./main.cpp)
+TARGET_LINK_LIBRARIES(IPCServer
+	${LIBS_SERVER})

@@ -1,0 +1,20 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+INCLUDE_DIRECTORIES(./)
+INCLUDE_DIRECTORIES(../)
+INCLUDE_DIRECTORIES(../NCClient)
+INCLUDE_DIRECTORIES(../NCStage)
+INCLUDE_DIRECTORIES(../NCStage/Basic)
+INCLUDE_DIRECTORIES(../../CustomizeFunctions/SupportFunctions)
+INCLUDE_DIRECTORIES(../../CustomizeFunctions/CustomizeStructs)
+INCLUDE_DIRECTORIES(../../CustomizeFunctions/GeneralImageProcess)
+
+AUX_SOURCE_DIRECTORY(./ LIB_SERVER_SOURCE)
+SET(LIB_SERVER_SOURCE 
+	${LIB_SERVER_SOURCE}
+	../NCClient/ncclient_macros.h
+	../NCStage/Basic/ncstage.cpp
+	../../CustomizeFunctions/SupportFunctions/string_fun.cpp
+	../../CustomizeFunctions/SupportFunctions/sys_fun.cpp)
+
+ADD_LIBRARY(ncserver SHARED ${LIB_SERVER_SOURCE})

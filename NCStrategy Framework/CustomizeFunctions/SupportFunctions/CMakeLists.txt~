@@ -1,0 +1,16 @@
+CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
+
+INCLUDE_DIRECTORIES(./)
+INCLUDE_DIRECTORIES(../)
+
+SET(LIB_STRING_SOURCE 
+	./string_fun.h
+	./string_fun.cpp)
+SET(LIB_SYS_SOURCE 
+	./string_fun.h
+	./string_fun.cpp
+	./sys_fun.h
+	./sys_fun.cpp)
+
+ADD_LIBRARY(string_fun SHARED ${LIB_STRING_SOURCE})
+ADD_LIBRARY(sys_fun SHARED ${LIB_SYS_SOURCE})
